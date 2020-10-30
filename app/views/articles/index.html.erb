@@ -1,9 +1,9 @@
-<h1>this are all the article</h1>
+<h1>Articles listing page</h1>
 <table>
   <thead>
-    <th rowspan= "3">Title</th>
-    <th rowspan= "3">Description</th>
-    <th rowspan= "3">Show</th>
+    <th >Title</th>
+    <th>Description</th>
+    <th colspan= "3">Actions</th>
   </thead>
   <tbody>
     <% @articles.each do |article| %>
@@ -12,11 +12,12 @@
         <td><%= article.description %></td>
         <td><%= link_to "Show", article_path(article[:id]) %></td>
         <td><%= link_to "Edit", edit_article_path(article[:id]) %></td>
-        <td><%= link_to "Delete", article_path(article[:id]), method: :delete %></td>
+        <td><%= link_to "Delete", article_path(article[:id]), method: :delete, data: {confirm: 'Are you sure you wanna delete?'} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br/>
 
 <%= button_to "New Post", { :action => "new" }, :method => :get %>
   
