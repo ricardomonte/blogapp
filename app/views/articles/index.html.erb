@@ -1,6 +1,18 @@
 <h1>this are all the article</h1>
-<ul>
-  <% @articles.each do |x| %>
-    <li><%= x.title %></li>
-  <%end %>
-</ul>
+<table>
+  <thead>
+    <th rowspan= "3">Title</th>
+    <th rowspan= "3">Description</th>
+    <th rowspan= "3">Show</th>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.description %></td>
+        <td><%= link_to "Show", article_path(article[:id]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  
